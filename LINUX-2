@@ -1,0 +1,94 @@
+1st ans)
+The Linux ‘tar’ stands for tape archive, is used to create Archive and extract the Archive files. tar command in Linux is one of the important command which provides archiving functionality in Linux. We can use Linux tar command to create compressed or uncompressed Archive files and also maintain and modify them. 
+Syntax: 
+tar [options] [archive-file] [file or directory to be archived]
+Options: 
+c : Creates Archive 
+-x : Extract the archive 
+-f : creates archive with given filename 
+-t : displays or lists files in archived file 
+-u : archives and adds to an existing archive file 
+-v : Displays Verbose Information 
+-A : Concatenates the archive files 
+-z : zip, tells tar command that creates tar file using gzip 
+-j : filter archive tar file using tbzip 
+-W : Verify a archive file 
+-r : update or add file or directory in already existed .tar file
+2nd ans)
+Grep is one of the most useful and powerful commands in Linux for text processing. grep searches one or more input files for lines that match a regular expression and writes each matching line to standard output.
+In this article, we’re going to explore the basics of how to use regular expressions in the GNU version of grep, which is available by default in most Linux operating systems.
+Grep Regular Expression
+A regular expression or regex is a pattern that matches a set of strings. A pattern consists of operators, constructs literal characters, and meta-characters, which have special meaning. GNU grep supports three regular expression syntaxes, Basic, Extended, and Perl-compatible.
+In its simplest form, when no regular expression type is given, grep interpret search patterns as basic regular expressions. To interpret the pattern as an extended regular expression, use the -E ( or --extended-regexp) option.
+In GNU’s implementation of grep there is no functional difference between the basic and extended regular expression syntaxes. The only difference is that in basic regular expressions the meta-characters ?, +, {, |, (, and ) are interpreted as literal characters. To keep the meta-characters’ special meanings when using basic regular expressions, the characters must be escaped with a backslash (\). We will explain the meaning of these and other meta-characters later.
+3rd ans)
+The minimum partition needed to run gnu/linux is one - the / partition.No, need a special /boot partition for grub.This was formerly needed by LILO because older versions didn't support LBA-mode and because of this the kernel had to be in the first 1024 cylinders of the disk. To ensure this, one created a boot-partition in this area, separated from the root-filesystem. Most modern boot-loaders support file-system and lba-mode, so a separate boot-partition is obsolete.swap it is essentially important especially when you are running processes that require a lot of RAM.
+4TH ANS)
+You can copy files by right-clicking on the file and selecting "Copy", then going to a different directory and selecting "Paste".
+You can also perform file copy-paste operations without leaving the terminal. In a Linux-based terminal, you do this using the cp command.
+You use the cp command for copying files from one location to another. This command can also copy directories (folders)
+The syntax of this command is:
+[file/directory-sources] specifies the sources of the files or directories you want to copy. And the [destination] argument specifies the location you want to copy the file to.
+5th ans)
+
+If a Linux process becomes unresponsive or is consuming too many resources, you may need to kill it.
+
+Most processes have their own methods of shutting down. Unfortunately, processes can malfunction and not allow themselves to be shut down. If a running background process is unresponsive, it becomes necessary to use a command to kill it.
+
+Here’s a complete guide on how to kill a Linux process using the command line
+Before killing or terminating a process, you need to consider permissions.
+
+A root user can kill all processes. You can either add sudo before a command to run it as root, or obtain a root shell with su. Then execute the command.
+
+Killing a process sends a termination message to the given process. There are multiple types of termination messages including:
+
+SIGKILL – SIGKILL is the ultimate way of killing a process. It will always kill a process and will kill the process abruptly, generating a fatal error. SIGKILL should always work. If it does not work, the operating system has failed.
+SIGTERM – SIGTERM attempts to kill a process, but unlike SIGKILL it may be blocked or otherwise handled. It can be considered a gentler way of attempting to terminate a process.
+For most purposes, SIGKILL will be the fastest and most effective method to terminate the process.
+6th ans)
+Renaming files is a very common operation whether you are using the command line or the GUI.
+Compared to the GUI (or Graphical User Interface), the CLI is especially powerful. This is in part because you can rename files in bulk or even schedule the scripts to rename files at a certain point in time.
+In this tutorial, you will see how you can rename files in the Linux command line using the built-in mv command.
+You can use the built-in Linux command mv to rename files.
+The mv command follows this syntax
+mv [options] source_file destination_file
+Here are some of the options that can come in handy with the mv command:
+-v , --verbose: Explains what is being done.
+-i, --interactive: Prompts before renaming the file.
+7th ans)
+Open Start.
+Search for Command Prompt.
+Right-click the top result and select the Run as administrator option.
+Type the following command to save the output to a text file and press Enter: YOUR-COMMAND > C:\PATH\TO\FOLDER\OUTPUT.txt
+In the command, change "YOUR-COMMAND" with your command and "c:\PATH\TO\FOLDER\OUTPUT.txt" with the path and file name to store the output. 
+(Optional) Type the following command to save the output and view results on the screen and press Enter: YOUR-COMMAND > C:\PATH\TO\FOLDER\OUTPUT.txt | type C:\PATH\TO\FOLDER\OUTPUT.txt
+In the command, change "YOUR-COMMAND" with your command and "c:\PATH\TO\FOLDER\OUTPUT.txt" with the path and filename to store and view the output. 
+This example exports the system technical specifications to the "laptop_tech_specs.txt" file and prints the information on the screen: systeminfo > C:\laptop_tech_specs.txt | type C:\laptop_tech_specs.txt
+Quick tip: If you have problems viewing the file, you can use the type c:\PATH\TO\FOLDER\OUTPUT.txt command after step No. 3.
+8th ans)
+Using the mount Command
+One way we can determine if a directory is mounted is by running the mount command and filtering the output.
+It outputs a list of currently mounted filesystems, so we can use awk to search for the directory which is in column number 3:
+mount | awk '{if ($3 == "/mnt/backup") { exit 0}} ENDFILE{exit -1}'
+Using the mountpoint Command
+We can also use the mountpoint command, which accepts a directory as an argument and prints if it’s mounted. This way, we can use directly mountpoint without awk:
+ mountpoint /mnt/backup
+Using the findmnt Command
+Another way to determine if a directory is mounted is by using findmnt and giving the directory as the parameter.
+findmnt displays a tree of all mounted filesystems.
+However, if we give it the directory as a parameter, it prints only the information about that directory:
+ findmnt /mnt/backup
+Reading /proc/mounts
+Finally, we can check if a directory is mounted if we filter the content of the /proc/mounts file. This file has similar information as mount and findmnt, so let’s use awk and search for the desired directory:
+awk '{if ($2 == "/mnt/backup") { exit 0}} ENDFILE{exit -1}' < /proc/mounts
+9th ans)
+When you have to find a file in Linux, it’s sometimes not as easy as finding a file in another operating system. This is especially true if you are running Linux without a graphical user interface and need to rely on the command line. This article covers the basics of how to find a file in Linux using the CLI. The find command in Linux is used to find a file (or files) by recursively filtering objects in the file system based on a simple conditional mechanism. You can use the find command to search for a file or directory on your file system. By using the -exec flag (find -exec), matches, which can be files, directories, symbolic links, system devices, etc., can be found and immediately processed within the same command.
+Use find from the command line to locate a specific file by name or extension. The following example searches for *.err files in the /home/username/ directory and all sub-directories:
+
+find /home/username/ -name "*.err"
+Using Common find Commands and Syntax to Find a File in Linux
+find expressions take the following form:
+find options starting/path expression
+The options attribute will control the find process’s behavior and optimization method.
+The starting/path attribute will define the top-level directory where find begins filtering.
+The expression attribute controls the tests that search the directory hierarchy to produce output.
